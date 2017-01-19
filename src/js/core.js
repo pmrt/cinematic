@@ -1,0 +1,31 @@
+define(function() {
+var
+    Cinematic = function() {
+};
+
+Cinematic.extend = function( name, fn, rawFn ) {
+    var rawFn = rawFn || false;
+
+    if ( !rawFn ) {
+        this[name] = fn.call();
+    } else {
+        this[name] = fn;
+    }
+}
+
+Cinematic.extend( "version", function(){
+    return "0.0.1-alp";
+})
+
+Cinematic.extend( "debug", function() {
+    return {
+        extend : Cinematic.extend
+    };
+})
+
+Cinematic.extend( "lastResults", function() {
+    return "";
+})
+
+    return Cinematic;
+});
