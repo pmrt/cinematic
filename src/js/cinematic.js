@@ -1,4 +1,6 @@
 define( [
+    "./var/initializer",
+    "./utils",
     "./core",
     "./load",
     "./ajax",
