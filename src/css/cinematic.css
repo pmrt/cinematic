@@ -57,8 +57,8 @@ sidebar .sidebar-footer {
     flex-flow: row wrap;
 }
 .movie {
-    background: #cccccc;
     height: 50%;
     min-width: 33.333%;
-    border: 1px solid black;
+    background: #cccccc no-repeat center center fixed;
+    background-size: cover;
 }
