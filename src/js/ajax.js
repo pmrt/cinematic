@@ -10,6 +10,7 @@ Cinematic.extend( "newRequest", function( name, page ) {
             url: URI,
             "success": function( data ){
                 Cinematic.lastResults = data;
+                Cinematic.appendResults();
             }
         });
 }, true);

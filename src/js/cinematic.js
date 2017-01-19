@@ -1,7 +1,7 @@
 define( [
     "./core",
+    "./load",
     "./ajax",
-    "./load"
 ], function( Cinematic ) {
 
     "use strict";
