@@ -2,11 +2,27 @@ define([
     "./core"
 ], function( Cinematic ) {
 
-Cinematic.extend( "newRequest", function( name, page, doTwice ) {
+Cinematic.extend( "query", function( name, reset) {
+    // We do two requests each first search
+    // since omdbAPI limit each request to 10
+    // movies per page.
+    var
+        reset = reset || false;
+
+    if ( reset ) {
+        // Reset
+        Cinematic.lastPage = 1;
+        Cinematic.clearResults();
+        Cinematic.newRequest( name );
+        Cinematic.newRequest( name );
+    } else {
+        Cinematic.newRequest( name );
+    }
+}, true);
+
+Cinematic.extend( "newRequest", function( name ) {
         const
-            URI = "http://www.omdbapi.com/?s=" + name + "&page=" + page;
-        var
-            doTwice = doTwice || false;
+            URI = "http://www.omdbapi.com/?s=" + name + "&page=" + Cinematic.lastPage++;
 
         $.ajax({
             url: URI,
@@ -15,13 +31,6 @@ Cinematic.extend( "newRequest", function( name, page, doTwice ) {
                 Cinematic.appendResults();
             }
         });
-
-        // We do two requests each first search
-        // since omdbAPI limit each request to 10
-        // movies per page.
-        if ( doTwice ) {
-            Cinematic.newRequest( name, ++page);
-        }
 }, true);
 
 Cinematic.debug.extend( "newRequest", function( onSuccessFn ) {
