@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Avenir Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Regular'), url('../font/AvenirNextLTPro-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Avenir Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Avenir Next LT Pro Bold'), url('../font/AvenirNextLTPro-Bold.woff') format('woff');
+}
+

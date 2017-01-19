@@ -6,7 +6,8 @@ module.exports = {
         js: './src/**/*.js',
         js_lib: './src/js/lib/*.*',
         css: './src/**/*.css',
-        img: './src/img/*.*'
+        img: './src/img/*.*',
+        font: './src/font/*.*'
     },
 
     build : {
@@ -14,7 +15,8 @@ module.exports = {
         html: './dist/',
         js: './dist/js/',
         css: './dist/',
-        img: './dist/'
+        img: './dist/',
+        font: './dist/'
     },
 
     test : {

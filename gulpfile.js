@@ -57,6 +57,12 @@ gulp.task('copy:lib', function() {
         .pipe( gulp.dest(paths.build.js) )
 })
 
+gulp.task('copy:font', function() {
+    return gulp.src( paths.src.font)
+        .pipe( copy(paths.build.root, { prefix: 1}) )
+        .pipe( gulp.dest(paths.build.font) )
+})
+
 gulp.task('build', function(){
         build.merge(config)
 });
@@ -72,5 +78,5 @@ gulp.task('minify:js', function(){
 });
 
 gulp.task('default', function(){
-    runSequence( 'copy:html', 'copy:css', 'copy:lib', 'copy:img', 'build' );
+    runSequence( 'copy:html', 'copy:css', 'copy:lib', 'copy:img', 'copy:font', 'build' );
 });
