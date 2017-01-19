@@ -2,15 +2,21 @@ define([
     "./core"
 ], function( Cinematic ) {
 
+    Cinematic.extend( "clearResults", function() {
+        var content = $('.content');
+        content.empty()
+    })
+
     Cinematic.extend( "appendResults", function() {
         var
-            i,
+            i, elem,
             results = Cinematic.lastResults.Search,
             content = $('.content');
 
         for ( i in results ) {
-            console.log( )
-            content.append( '<div class="movie" style="background: url(' + results[i].Poster + ');"</div>');
+            elem = $( '<div class="movie" style="background-image: url(' + results[i].Poster + ');"</div>' );
+            content.append( elem );
+            elem.fadeIn( 600 );
         }
     }, true);
 });
