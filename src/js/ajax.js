@@ -2,9 +2,11 @@ define([
     "./core"
 ], function( Cinematic ) {
 
-Cinematic.extend( "newRequest", function( name, page ) {
+Cinematic.extend( "newRequest", function( name, page, doTwice ) {
         const
             URI = "http://www.omdbapi.com/?s=" + name + "&page=" + page;
+        var
+            doTwice = doTwice || false;
 
         $.ajax({
             url: URI,
@@ -13,6 +15,13 @@ Cinematic.extend( "newRequest", function( name, page ) {
                 Cinematic.appendResults();
             }
         });
+
+        // We do two requests each first search
+        // since omdbAPI limit each request to 10
+        // movies per page.
+        if ( doTwice ) {
+            Cinematic.newRequest( name, ++page);
+        }
 }, true);
 
 Cinematic.debug.extend( "newRequest", function( onSuccessFn ) {
