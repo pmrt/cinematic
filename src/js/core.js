@@ -5,12 +5,7 @@ var
 
 Cinematic.extend = function( name, fn, rawFn ) {
     var rawFn = rawFn || false;
-
-    if ( !rawFn ) {
-        this[name] = fn.call();
-    } else {
-        this[name] = fn;
-    }
+    this[name] = !rawFn ? fn.call() : fn;
 }
 
 Cinematic.extend( "version", function(){
