@@ -112,11 +112,11 @@ sidebar .sidebar-footer .footer-wrapper > img {
     position: relative;
     display: flex;
     flex-flow: row wrap;
+    height: auto;
 }
 .movie {
     display: none;
-    height: 40%;
+    height: 250px;
     min-width: 25%;
     background-size: cover;
 }
-
