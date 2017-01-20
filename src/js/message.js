@@ -21,7 +21,7 @@ Message.prototype._setup = function() {
 }
 
 Message.prototype.render = function() {
-    var style = this.position == "top" ? "top: 1%;" : "bottom: 0.3%;";
+    var style = this.position == "top" ? "top: 18px;" : "bottom: 0.3%;";
     this.me = $( "<div class='message' style='" +style+ "'><p>" +this.message+ "</p></div>" );
     this.parent.append( this.me );
 }
