@@ -15,20 +15,20 @@ function _setup() {
         Cinematic.query( searchInput.val(), true );
     }
 
+    function onShortcut(e) {
+        if ( e.key == 'Enter' ) {
+            if ( !isEmpty(searchInput) ) {
+                lazySearch();
+            }
+        }
+    }
+
     lazySearch = debounce(search, 500);
 
     // Events
     Cinematic.query( initializer.initial_title_search, initializer.initial_reset );
-    searchBtn.click( function() {
-        search();
-    })
-    $document.keypress( function(e) {
-        if ( e.key == 'Enter' ) {
-            if ( !isEmpty($('.search-input')) ) {
-                lazySearch();
-            }
-        }
-    })
+    searchBtn.click( search );
+    $document.keypress( onShortcut );
 
 }
 
