@@ -2,6 +2,7 @@ define([
     "./core"
 ], function( Cinematic ) {
 
+//TODO re-indent
 Cinematic.extend( "query", function( name, reset) {
     // We do two requests each first search
     // since omdbAPI limit each request to 10
@@ -26,10 +27,15 @@ Cinematic.extend( "newRequest", function( name ) {
         $.ajax({
             url: URI,
             "success": function( data ){
-                Cinematic.lastResults = data;
-                Cinematic.lastTitleSearch = name;
-                Cinematic.appendResults();
-                msg.miss();
+                if ( data.Response == 'True' ) {
+                    Cinematic.lastResults = data;
+                    Cinematic.lastTitleSearch = name;
+                    Cinematic.appendResults();
+                    msg.miss();
+                } else {
+                    msg.miss();
+                    new Message( "No results for search", "top" );
+                }
             }
         });
 }, true);

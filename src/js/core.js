@@ -3,6 +3,7 @@ var
     Cinematic = function() {
 };
 
+// TODO Improve semantically extend()
 Cinematic.extend = function( name, fn, rawFn ) {
     var rawFn = rawFn || false;
     this[name] = !rawFn ? fn.call() : fn;
