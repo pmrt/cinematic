@@ -28,10 +28,15 @@ Cinematic.extend( "newRequest", function( name ) {
             url: URI,
             "success": function( data ){
                 Cinematic.lastResults = data;
+                Cinematic.lastTitleSearch = name;
                 Cinematic.appendResults();
             }
         });
 }, true);
+
+Cinematic.extend( "update", function() {
+    Cinematic.query( Cinematic.lastTitleSearch );
+}, true)
 
 Cinematic.debug.extend( "newRequest", function( onSuccessFn ) {
         const

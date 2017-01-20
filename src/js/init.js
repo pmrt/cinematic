@@ -8,5 +8,6 @@ function _setup() {
     Cinematic.query( initializer.initial_title_search, initializer.initial_reset );
 }
 
-$(document).ready(_setup);
+$(document).ready( _setup );
+$(document).scroll( Cinematic._onScroll );
 });

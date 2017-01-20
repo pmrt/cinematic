@@ -22,8 +22,13 @@ Cinematic.extend( "debug", function() {
     };
 })
 
+Cinematic.extend( "lastTitleSearch", function() {
+    return 1;
+})
+
+
 Cinematic.extend( "lastResults", function() {
-    return "";
+return "";
 })
 
     return Cinematic;

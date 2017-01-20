@@ -4,6 +4,7 @@ define( [
     "./core",
     "./load",
     "./ajax",
+    "./scroll",
     "./init"
 ], function( Cinematic ) {
 
