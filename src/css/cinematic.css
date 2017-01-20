@@ -31,6 +31,8 @@ sidebar .footer-wrapper {  width: 100%; }
 sidebar {
     position: fixed;
     background: #373942;
+    box-shadow: -2px 3px 30px 9px rgba(0,0,0,0.51);
+    z-index: 99;
 }
 
 sidebar .search {
@@ -41,23 +43,24 @@ sidebar .search {
 
 sidebar .search .search-wrapper {
     position: absolute;
-    bottom: 30%;
+    bottom: 20%;
     display: flex;
     align-items: baseline;
 }
 
 sidebar .search .search-wrapper > input {
     width: 75%;
-    padding: 2px;
+    padding: 8px;
     border-bottom: dashed 2px #fff;
     transition: border 0.3s;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
+    text-transform: uppercase;
 }
 
 sidebar .search .search-wrapper > img {
-    height: 24px;
-    width: 24px;
+    height: 32px;
+    width: 32px;
     margin-left: 6%;
 }
 
