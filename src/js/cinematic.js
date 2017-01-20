@@ -1,5 +1,6 @@
 define( [
     "./var/initializer",
+    "./message",
     "./utils",
     "./core",
     "./load",
