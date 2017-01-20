@@ -21,15 +21,15 @@ Cinematic.extend( "query", function( name, reset) {
 }, true);
 
 Cinematic.extend( "newRequest", function( name ) {
-        const
-            URI = "http://www.omdbapi.com/?s=" + name + "&page=" + Cinematic.lastPage++;
-
+        var msg = new Message( "loading...", "bottom");
+        const URI = "http://www.omdbapi.com/?s=" + name + "&page=" + Cinematic.lastPage++;
         $.ajax({
             url: URI,
             "success": function( data ){
                 Cinematic.lastResults = data;
                 Cinematic.lastTitleSearch = name;
                 Cinematic.appendResults();
+                msg.miss();
             }
         });
 }, true);
