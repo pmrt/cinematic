@@ -8,6 +8,7 @@ Cinematic.extend( "clearResults", function() {
     content.empty()
 }, true);
 
+// TODO When loading if any move has no poster load next request, always append at least 10 with valid posters.
 Cinematic.extend( "appendTo", function( results, content ) {
     var i, elem, currentPoster;
     for ( i in results ) {
