@@ -38,11 +38,10 @@ Cinematic.extend( "newRequest", function( name ) {
                     Cinematic.lastResults = data;
                     Cinematic.lastTitleSearch = name;
                     Cinematic.appendResults();
-                    msg.miss();
                 } else {
-                    msg.miss();
                     new Message( "No results for search", "top" );
                 }
+                if ( msg.hasOwnProperty('miss') ) msg.miss();
             }
         });
 }, true);
