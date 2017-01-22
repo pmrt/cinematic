@@ -29,7 +29,11 @@ Cinematic.extend( "lastTitleSearch", function() {
 
 
 Cinematic.extend( "lastResults", function() {
-return "";
+    return "";
+})
+
+Cinematic.extend( "searchType", function() {
+    return "movie";
 })
 
     return Cinematic;

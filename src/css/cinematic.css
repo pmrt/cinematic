@@ -79,6 +79,10 @@ sidebar .menu > ul > li {
     color: #ccc;
 }
 
+sidebar .menu > ul > li:hover {
+    color: #fff;
+}
+
 sidebar .menu > ul > li:nth-child(2) {  opacity: 0.6;  }
 sidebar .menu > ul > li:nth-child(3) {  opacity: 0.3;  }
 
