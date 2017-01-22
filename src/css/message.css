@@ -2,12 +2,13 @@
     opacity: 0;
     position: absolute;
     width: 100%;
+    text-align: center
 }
 
 .message p {
-    padding: 4px;
-    margin: 0 auto;
-    width: 150px;
+    display: inline-block;
+    padding: 4px 10px;
+    width: auto;
     background: #fff;
     border-radius: 20px;
     text-align: center;

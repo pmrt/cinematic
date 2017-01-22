@@ -8,6 +8,10 @@ function connTimeout() {
     msg = new Message( "loading...", "bottom");
 }
 
+function connFail() {
+    msg = new Message( "No network connection", "top");
+}
+
 //TODO re-indent
 Cinematic.extend( "query", function( name, reset) {
     // We do two requests each first search
@@ -28,22 +32,25 @@ Cinematic.extend( "query", function( name, reset) {
 }, true);
 
 Cinematic.extend( "newRequest", function( name ) {
-        var timeout = setTimeout( connTimeout, 1000),
-            URI = "http://www.omdbapi.com/?s=" + name + "&page=" + Cinematic.lastPage++;
-        $.ajax({
-            url: URI,
-            "success": function( data ){
-                clearTimeout( timeout );
-                if ( data.Response == 'True' ) {
-                    Cinematic.lastResults = data;
-                    Cinematic.lastTitleSearch = name;
-                    Cinematic.appendResults();
-                } else {
-                    new Message( "No results for search", "top" );
-                }
-                if ( msg.hasOwnProperty('miss') ) msg.miss();
+    var timeout = setTimeout( connTimeout, 1000),
+        URI = "http://www.omdbapi.com/?s=" + name + "&page=" + Cinematic.lastPage++;
+    $.ajax({
+        url: URI,
+        "success": function( data ){
+            clearTimeout( timeout );
+            if ( data.Response == 'True' ) {
+                Cinematic.lastResults = data;
+                Cinematic.lastTitleSearch = name;
+                Cinematic.appendResults();
+            } else {
+                new Message( "No results for search", "top" );
             }
-        });
+            if ( msg ) msg.miss();
+        },
+        "error": function( XMLHttpRequest ) {
+            if ( XMLHttpRequest.readyState == 0) connFail();
+        }
+    });
 }, true);
 
 Cinematic.extend( "update", function() {
@@ -51,13 +58,13 @@ Cinematic.extend( "update", function() {
 }, true)
 
 Cinematic.debug.extend( "newRequest", function( onSuccessFn ) {
-        const
-            URI = "../test/assets/movie.fixture.json";
+    const
+        URI = "../test/assets/movie.fixture.json";
 
-        $.ajax({
-            url: URI,
-            "success": onSuccessFn
-        });
+    $.ajax({
+        url: URI,
+        "success": onSuccessFn
+    });
 }, true);
 
 });
