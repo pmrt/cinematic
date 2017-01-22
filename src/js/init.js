@@ -27,7 +27,7 @@ function _setup() {
 
     // Events
     Cinematic.query( initializer.initial_title_search, initializer.initial_reset );
-    searchBtn.click( search );
+    searchBtn.click( lazySearch );
     $document.keypress( onShortcut );
 
 }
