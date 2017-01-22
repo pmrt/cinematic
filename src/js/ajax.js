@@ -2,6 +2,12 @@ define([
     "./core"
 ], function( Cinematic ) {
 
+var msg;
+
+function connTimeout() {
+    msg = new Message( "loading...", "bottom");
+}
+
 //TODO re-indent
 Cinematic.extend( "query", function( name, reset) {
     // We do two requests each first search
@@ -22,11 +28,12 @@ Cinematic.extend( "query", function( name, reset) {
 }, true);
 
 Cinematic.extend( "newRequest", function( name ) {
-        var msg = new Message( "loading...", "bottom");
-        const URI = "http://www.omdbapi.com/?s=" + name + "&page=" + Cinematic.lastPage++;
+        var timeout = setTimeout( connTimeout, 1000),
+            URI = "http://www.omdbapi.com/?s=" + name + "&page=" + Cinematic.lastPage++;
         $.ajax({
             url: URI,
             "success": function( data ){
+                clearTimeout( timeout );
                 if ( data.Response == 'True' ) {
                     Cinematic.lastResults = data;
                     Cinematic.lastTitleSearch = name;
