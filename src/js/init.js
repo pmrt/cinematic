@@ -9,10 +9,18 @@ function _setup() {
         lazySearch,
         searchBtn = $( '.search-btn' ),
         searchInput = $( '.search-input'),
+        list = $( 'sidebar .menu > ul > li'),
         $document = $(document);
 
     function search() {
-        Cinematic.query( searchInput.val(), true );
+        Cinematic.query( searchInput.val(), Cinematic.searchType, true );
+    }
+
+
+    function typeBtn() {
+        var type = $(this).text().toLowerCase();
+        Cinematic.searchType = type;
+        lazySearch();
     }
 
     function onShortcut(e) {
@@ -26,8 +34,9 @@ function _setup() {
     lazySearch = debounce(search, 500);
 
     // Events
-    Cinematic.query( initializer.initial_title_search, initializer.initial_reset );
+    Cinematic.query( initializer.initial_title_search, Cinematic.searchType, initializer.initial_reset );
     searchBtn.click( lazySearch );
+    list.click( typeBtn );
     $document.keypress( onShortcut );
 
 }

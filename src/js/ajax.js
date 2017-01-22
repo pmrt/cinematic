@@ -13,7 +13,7 @@ function connFail() {
 }
 
 //TODO re-indent
-Cinematic.extend( "query", function( name, reset) {
+Cinematic.extend( "query", function( name, searchType, reset) {
     // We do two requests each first search
     // since omdbAPI limit each request to 10
     // movies per page.
@@ -24,16 +24,17 @@ Cinematic.extend( "query", function( name, reset) {
         // Reset
         Cinematic.lastPage = 1;
         Cinematic.clearResults();
-        Cinematic.newRequest( name );
-        Cinematic.newRequest( name );
+        Cinematic.newRequest( name, searchType );
+        Cinematic.newRequest( name, searchType );
     } else {
-        Cinematic.newRequest( name );
+        Cinematic.newRequest( name, searchType );
     }
 }, true);
 
-Cinematic.extend( "newRequest", function( name ) {
+Cinematic.extend( "newRequest", function( name, searchType ) {
     var timeout = setTimeout( connTimeout, 1000),
-        URI = "http://www.omdbapi.com/?s=" + name + "&page=" + Cinematic.lastPage++;
+        URI = "http://www.omdbapi.com/?s=" + name + "&page=" + Cinematic.lastPage++
+        + "&type=" + searchType;
     $.ajax({
         url: URI,
         "success": function( data ){
@@ -54,7 +55,7 @@ Cinematic.extend( "newRequest", function( name ) {
 }, true);
 
 Cinematic.extend( "update", function() {
-    Cinematic.query( Cinematic.lastTitleSearch );
+    Cinematic.query( Cinematic.lastTitleSearch, Cinematic.searchType );
 }, true)
 
 Cinematic.debug.extend( "newRequest", function( onSuccessFn ) {
