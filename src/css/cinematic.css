@@ -83,6 +83,36 @@ sidebar .menu > ul > li:hover {
     color: #fff;
 }
 
+sidebar .desc {
+    padding: 25px;
+}
+
+sidebar .title {
+    transition: all 0.5ms ease-in-out;
+    color: rgb(116,205,164);
+    font-family: 'Diot Regular';
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+sidebar .year {
+    transition: all 0.5ms ease-in-out;
+    color: #ccc;
+    font-family: 'Avenir Bold';
+    font-size: 12px;
+}
+
+sidebar .plot {
+    transition: all 0.5ms ease-in-out;
+    color: #ccc;
+    font-family: 'Diot Regular';
+    text-align: justify;
+    word-break: break-all;
+    -webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2));
+}
+
+
+
 sidebar .menu > ul > li:nth-child(2) {  opacity: 0.6;  }
 sidebar .menu > ul > li:nth-child(3) {  opacity: 0.3;  }
 
