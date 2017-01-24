@@ -23,9 +23,7 @@ Cinematic.extend( "query", function( name, searchType, reset) {
     // We do two requests each first search
     // since omdbAPI limit each request to 10
     // movies per page.
-    var
-        reset = reset || false;
-
+    var reset = reset || false;
     if ( reset ) {
         // Reset
         Cinematic.lastPage = 1;
@@ -85,9 +83,7 @@ Cinematic.extend( "update", function() {
 }, true)
 
 Cinematic.debug.extend( "newRequest", function( onSuccessFn ) {
-    const
-        URI = "../test/assets/movie.fixture.json";
-
+    const URI = "../test/assets/movie.fixture.json";
     $.ajax({
         url: URI,
         "success": onSuccessFn

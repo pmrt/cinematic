@@ -4,7 +4,7 @@ function isValidPoster( exp ) {
     return exp != 'N/A';
 }
 
-function debounce(func, wait) {
+function debounce( func, wait ) {
     var timeout;
     return function() {
         var context = this, args = arguments;

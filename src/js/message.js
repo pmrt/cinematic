@@ -1,6 +1,5 @@
 define(function(){
-var
-    Message = function( message, position, timing ) {
+var Message = function( message, position, timing ) {
     this.message = message;
     this.position = position;
     this.timing = timing || false;
@@ -9,8 +8,7 @@ var
 }
 
 Message.prototype._setup = function() {
-    var
-        self = this;
+    var self = this;
     this.render();
     this.popup();
     if ( this.timing ) {
